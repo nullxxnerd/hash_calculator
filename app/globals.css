@@ -2,32 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.glass {
+  background: rgba(255, 255, 255, 0.192);
+  box-shadow: 0 8px 32px 0 rgba(56, 104, 150, 0.37);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.submit_button {
+  /* Variables */
+  --button_radius: 0.75em;
+  --button_color: #e8e8e8;
+  --button_outline_color: #000000;
+  font-size: 17px;
+  font-weight: bold;
+  border: none;
+  border-radius: var(--button_radius);
+  background: var(--button_outline_color);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.button_top {
+  display: block;
+  box-sizing: border-box;
+  border: 2px solid var(--button_outline_color);
+  border-radius: var(--button_radius);
+
+  background: var(--button_color);
+  color: var(--button_outline_color);
+  transform: translateY(-0.2em);
+  transition: transform 0.1s ease;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.submit_button:hover .button_top {
+  /* Pull the button upwards when hovered */
+  transform: translateY(-0.33em);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.submit_button:active .button_top {
+  /* Push the button downwards when pressed */
+  transform: translateY(0);
+}
+.copy_button {
+  position: absolute;
+  right: 10px;
+}
+.text {
+  display: block;
+  word-wrap: break-word;
 }
